@@ -1,16 +1,16 @@
 const buttonsInfo = [
     {
-    name: "Jennifer",
-    datakey: "1",
-    row: "1",
-    mainEng: "q",
-    tabEng: "Q",
-    mainRus: "й",
-    tabRus: "Й",
-    sound: "../assets/sound.mp3",
+        name: "Jennifer",
+        datakey: "1",
+        row: "1",
+        mainEng: "q",
+        tabEng: "Q",
+        mainRus: "й",
+        tabRus: "Й",
     },
 ];
 
+//Create DOM
 const createHeader = () => {
     const element = document.createElement("h1");
     element.classList.add("header__text");
@@ -21,7 +21,7 @@ const createHeader = () => {
 const createTextarea = () => {
     const element = document.createElement("section");
     element.innerHTML = `
-    <textarea class="textarea__text" placeholder="Hello World!"></textarea>
+    <textarea class="textarea__text" placeholder="Type here..."></textarea>
     `;
     element.classList.add("textarea");
     document.body.append(element);
@@ -104,7 +104,9 @@ const createKeyboard = () => {
     <button class="one-button">◄</button>
     <button class="one-button">▼</button>
     <button class="one-button">►</button>
-</div>`;
+</div>
+<audio class="audio" src="assets/sound.mp3"></audio>
+<audio class="audio-start" src="assets/turn_on.mp3"></audio>`;
     element.classList.add("keybord");
     document.body.append(element);
 };
@@ -112,3 +114,24 @@ const createKeyboard = () => {
 createHeader();
 createTextarea();
 createKeyboard();
+
+//Audio
+const oneButton = document.querySelectorAll('.one-button');
+
+oneButton.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        playSoundPress();
+    });
+});
+
+window.addEventListener("DOMContentLoaded", playSoundStart());
+
+function playSoundPress() {
+    const audio = document.querySelector('.audio');
+    audio.play();
+}
+
+// function playSoundStart() {
+//     const audio = document.querySelector('.audio-start');
+//     audio.play();
+// }
