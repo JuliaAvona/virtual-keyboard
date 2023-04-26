@@ -22,7 +22,15 @@ body {
     font-size: 4rem;
     display: flex;
     justify-content: center;
-    margin: 10px auto;
+    margin: 20px auto;
+}
+
+.header__info {
+    color: $text-primary;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
 }
 
 .textarea {
@@ -45,7 +53,7 @@ body {
 }
 
 .keybord {
-    width: 950px;
+    width: 1000px;
     height: 300px;
 
 
@@ -62,10 +70,18 @@ body {
             box-shadow: 0px 0px 3px 1px $grey;
             font-size: 1.5rem;
             margin: 3px;
+            border-width: 7px;
+            transition: all 0.2s ease-out;
+            opacity: 0.8;
 
             &:hover {
-                box-shadow: 0px 0px 4px 2px $grey;
                 opacity: 0.9;
+            }
+
+            &:active {
+                background-color: #faffc7;
+                border-radius: 20px;
+                opacity: 1;
             }
         }
 

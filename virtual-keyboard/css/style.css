@@ -24,7 +24,18 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 10px auto; }
+  margin: 20px auto; }
+
+.header__info {
+  color: #f4f8fb;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5px auto; }
 
 .textarea {
   display: -webkit-box;
@@ -49,7 +60,7 @@ body {
   cursor: pointer; }
 
 .keybord {
-  width: 950px;
+  width: 1000px;
   height: 300px; }
   .keybord .one-row {
     display: -webkit-box;
@@ -68,11 +79,17 @@ body {
       -webkit-box-shadow: 0px 0px 3px 1px silver;
               box-shadow: 0px 0px 3px 1px silver;
       font-size: 1.5rem;
-      margin: 3px; }
+      margin: 3px;
+      border-width: 7px;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      opacity: 0.8; }
       .keybord .one-row .one-button:hover {
-        -webkit-box-shadow: 0px 0px 4px 2px silver;
-                box-shadow: 0px 0px 4px 2px silver;
         opacity: 0.9; }
+      .keybord .one-row .one-button:active {
+        background-color: #faffc7;
+        border-radius: 20px;
+        opacity: 1; }
     .keybord .one-row .button-space {
       min-width: 400px; }
     .keybord .one-row .style-one {
