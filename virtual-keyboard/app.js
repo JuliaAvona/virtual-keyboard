@@ -14,11 +14,22 @@ const buttonsInfo = [
 
 //Audio
 const oneButton = document.querySelectorAll('.one-button');
+const textArea = document.querySelector('.textarea__text');
 
 oneButton.forEach((btn) => {
-    btn.addEventListener("click", () => {
+
+    btn.addEventListener('click', (event) => {
         playSoundPress();
+        textArea.focus();
+        textArea.textContent = event.code;
     });
+
+    btn.addEventListener('keydown', (event) => {
+        playSoundPress();
+        textArea.focus();
+        textArea.textContent = event.code;
+    });
+
 });
 
 function playSoundPress() {

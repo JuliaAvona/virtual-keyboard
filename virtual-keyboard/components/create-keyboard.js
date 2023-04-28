@@ -12,7 +12,7 @@ const createHeader = () => {
 const createTextarea = () => {
     const element = document.createElement("section");
     element.innerHTML = `
-    <textarea class="textarea__text" placeholder="Type here..."></textarea>
+    <textarea class="textarea__text" placeholder="Type here..." autofocus></textarea>
     `;
     element.classList.add("textarea");
     document.body.append(element);
