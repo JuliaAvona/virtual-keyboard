@@ -134,6 +134,11 @@ const eng = [
     shift: "}",
     keyCode: 221,
   },
+  // {
+  //     basicValue: "\\",
+  //     shift: "|",
+  //     keyCode: 220,
+  // },
   {
     basicValue: "CapsLock",
     shift: null,
