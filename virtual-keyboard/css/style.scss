@@ -1,104 +1,135 @@
-$color-primary: #0e1525;
-$color-primary-light: #1c2333;
-$text-primary: #f4f8fb;
-$decoracion: rgb(254, 208, 233);
-$grey: rgb(192, 192, 192);
+$color-primary: #FFFADD;
+$color-primary-l: #FFE5B4;
+$color-primary-s: #fcfbf7;
+$color-secondary: #FADADD;
+$color-secondary-l: #FFD1DC;
+$color-secondary-xl: #ff98b0;
 
-$keybord-color1: #ecaebc;
-$keybord-color2: #bfd335;
-$keybord-color3: #07c0cb;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
 
 body {
-    background-color: $color-primary;
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: $color-primary-s;
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
-.header__text {
-    color: $text-primary;
-    font-size: 4rem;
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-}
+textarea {
+    display: block;
+    width: 920px;
+    height: 200px;
+    resize: none;
+    margin: 0 auto;
+    padding: 10px 10px;
+    margin: 0 auto 20px auto;
+    font-family: inherit;
+    color: black;
+    font-size: 1.8rem;
+    border: 2px solid black;
+    background: $color-primary;
+    border-radius: 10px;
 
-.header__info {
-    color: $text-primary;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    margin: 5px auto;
-}
+    &::-webkit-scrollbar {
+      background-color: $color-primary;
+      width: 15px;
+      border-radius: 10px;
+    }
 
-.textarea {
-    display: flex;
-    justify-content: center;
-    margin: 50px 0;
-}
-
-.textarea__text {
-    width: 900px;
-    height: 300px;
-    background-color: $color-primary-light;
-    color: $text-primary;
-    box-shadow: 3px 3px 3px $decoracion;
-    border-radius: 20px;
-    border: 3px solid;
-    padding: 20px;
-    font-size: 3rem;
-    cursor: pointer;
-}
-
-.keybord {
-    width: 1000px;
-    height: 300px;
-
-
-    .one-row {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-
-        .one-button {
-            height: 55px;
-            min-width: 55px;
-            border-radius: 5px;
-            margin-bottom: 12px;
-            box-shadow: 0px 0px 3px 1px $grey;
-            font-size: 1.5rem;
-            margin: 3px;
-            border-width: 7px;
-            transition: all 0.2s ease-out;
-            opacity: 0.8;
-
-            &:hover {
-                opacity: 0.9;
-            }
-
-            &:active {
-                background-color: #faffc7;
-                border-radius: 20px;
-                opacity: 1;
-            }
-        }
-
-        .button-space {
-            min-width: 400px;
-        }
-
-        .style-one {
-            background-color: $keybord-color1;
-        }
-
-        .style-two {
-            background-color: $keybord-color2;
-        }
-
-        .style-three {
-            background-color: $keybord-color3;
-        }
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-secondary;
+      border-radius: 10px;
     }
 }
+
+// .header__text {
+//     color: $text-primary;
+//     font-size: 4rem;
+//     display: flex;
+//     justify-content: center;
+//     margin: 20px auto;
+// }
+
+// .header__info {
+//     color: $text-primary;
+//     font-size: 1rem;
+//     display: flex;
+//     justify-content: center;
+//     margin: 5px auto;
+// }
+
+// .textarea {
+//     display: flex;
+//     justify-content: center;
+//     margin: 50px 0;
+// }
+
+// .textarea__text {
+//     width: 900px;
+//     height: 300px;
+//     background-color: $color-primary-light;
+//     color: $text-primary;
+//     box-shadow: 3px 3px 3px $decoracion;
+//     border-radius: 20px;
+//     border: 3px solid;
+//     padding: 20px;
+//     font-size: 3rem;
+//     cursor: pointer;
+// }
+
+// .keybord {
+//     width: 1000px;
+//     height: 300px;
+
+
+//     .one-row {
+//         display: flex;
+//         justify-content: space-between;
+//         flex-wrap: nowrap;
+
+//         .one-button {
+//             height: 55px;
+//             min-width: 55px;
+//             border-radius: 5px;
+//             margin-bottom: 12px;
+//             box-shadow: 0px 0px 3px 1px $grey;
+//             font-size: 1.5rem;
+//             margin: 3px;
+//             border-width: 7px;
+//             transition: all 0.2s ease-out;
+//             opacity: 0.8;
+
+//             &:hover {
+//                 opacity: 0.9;
+//             }
+
+//             &:active {
+//                 background-color: #faffc7;
+//                 border-radius: 20px;
+//                 opacity: 1;
+//             }
+//         }
+
+//         .button-space {
+//             min-width: 400px;
+//         }
+
+//         .style-one {
+//             background-color: $keybord-color1;
+//         }
+
+//         .style-two {
+//             background-color: $keybord-color2;
+//         }
+
+//         .style-three {
+//             background-color: $keybord-color3;
+//         }
+//     }
+// }
