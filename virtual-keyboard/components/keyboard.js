@@ -11,8 +11,10 @@ class Keyboard {
 
   init(lang) {
     this.keys = language[lang];
-    this.output = create('textarea', null, null, document.body, ['name', 'Input'], ['cols', '30'], ['rows', '10'], ['placeholder', 'Type here'], ['autofocus']);
-    this.container = create('section', 'keyboard', null, document.body, ['data-language', lang], ['onselectstart', 'return false']);
+    this.output = create('textarea', null, null, document.body, 
+      ['name', 'Input'], ['cols', '30'], ['rows', '10'], ['placeholder', 'Type here'], ['autofocus']);
+    this.container = create('section', 'keyboard', null, document.body, 
+      ['data-language', lang], ['onselectstart', 'return false']);
     this.row1 = create('div', 'row row-1', null, this.container);
     this.row2 = create('div', 'row row-2', null, this.container);
     this.row3 = create('div', 'row row-3', null, this.container);
@@ -38,7 +40,7 @@ class Keyboard {
       } else {
         this.row5.append(newKey.container);
       }
-    })
+    });
 
     this.row5.append(create('div', 'info', 'Info'));
 
@@ -68,7 +70,7 @@ class Keyboard {
         this.isShift = true;
         this.switchCase(true);
       }
-      if (event.keyCode === 18) this.isAlt = true;
+      if (event.keyCode === 18) {this.isAlt = true;}
       if (event.keyCode === 16 && this.isAlt || event.keyCode === 18 && this.isShift) {
         this.switchLanguage();
       }
@@ -103,7 +105,7 @@ class Keyboard {
         this.isShift = false;
         this.switchCase(false);
       }
-      if (event.keyCode === 18) this.isAlt = false;
+      if (event.keyCode === 18) {this.isAlt = false;}
     });
 
     this.currentPressedKey = null,
@@ -126,7 +128,7 @@ class Keyboard {
               this.isShift = true;
               this.switchCase(true);
             }
-            if (key.dataset.code === '18') this.isAlt = true;
+            if (key.dataset.code === '18') {this.isAlt = true;}
 
             if (key.dataset.code === '16' && this.isAlt || key.dataset.code === '18' && this.isShift) {
               this.switchLanguage();
@@ -153,10 +155,10 @@ class Keyboard {
           this.isShift = false;
           this.switchCase(false);
         }
-        if (this.currentPressedKey.dataset.code === '18') this.isAlt = false;
+        if (this.currentPressedKey.dataset.code === '18') {this.isAlt = false;}
         this.currentPressedKey = null;
       }
-    })
+    });
 
     return this;
   }
@@ -184,12 +186,6 @@ class Keyboard {
         if (button.keySub.textContent && button.basicValue.length < 2) {
           button.keySub.classList.remove('key__sub_active');
           button.keyMain.classList.remove('key_inactive');
-
-          /* if(this.isCaps) {
-              button.keyMain.textContent = button.basicValue;
-          } else if(!this.isCaps) {
-              button.keyMain.textContent = button.shift;
-          } */
         } else if (button.basicValue.length < 2) {
           if (this.isCaps) {
             button.keyMain.textContent = button.shift;
@@ -250,7 +246,7 @@ class Keyboard {
         this.output.value = `${leftFromCursor.slice(0, -1)}${rightFromCursor}`;
         --cursorPosition;
       }
-    }
+    };
 
     if (fnButtons[keyObj.keyCode]) {
       fnButtons[keyObj.keyCode]();
@@ -258,7 +254,6 @@ class Keyboard {
       ++cursorPosition;
       this.output.value = `${leftFromCursor}${symbol || ''}${rightFromCursor}`;
     }
-
     this.output.setSelectionRange(cursorPosition, cursorPosition);
   }
 

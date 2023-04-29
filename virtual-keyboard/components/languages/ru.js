@@ -316,7 +316,7 @@
 //   }
 // ];
 
-const rus = [
+const ru = [
   {
       basicValue: "ё",
       shift: "Ё",
@@ -634,4 +634,4 @@ const rus = [
   }
 ];
 
-export default rus;
+export default ru;

@@ -1,2 +1,2 @@
 import { storageGet } from './components/utils/storage.js';
-const lang = storageGet('lang', 'eng');
+import Keyboard from './components/keyboard.js';

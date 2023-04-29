@@ -321,7 +321,7 @@
 //   }
 // ];
 
-const eng = [
+const en = [
   {
     basicValue: "`",
     shift: "~",
@@ -639,4 +639,4 @@ const eng = [
   }
 ];
 
-export default eng;
+export default en;
