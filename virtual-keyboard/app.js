@@ -1,7 +1,8 @@
 import Keyboard from './components/keyboard.js';
 import { storageGet } from './components/utils/storage.js';
 
-const lang = storageGet('lang', 'en');
+const lang = storageGet('lang', 'ru');
+
 new Keyboard().init(lang).generateLayout();
 const infoButton = document.querySelector('.info');
 infoButton.addEventListener('click', () => {

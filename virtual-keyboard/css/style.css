@@ -6,7 +6,7 @@ html {
   font-size: 10px; }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f2fadd;
   margin: 0 auto;
   padding-top: 50px; }
@@ -20,11 +20,11 @@ textarea {
   font-size: 3rem;
   border: 2px solid black;
   background: #e1fbfc;
-  border-radius: 12px;
+  border-radius: 2px;
   resize: none;
   margin: 0 auto;
   padding: 10px 10px;
-  margin: 0 auto 20px auto; }
+  margin: 0 auto 30px auto; }
   textarea::-webkit-scrollbar-thumb {
     background-color: #d5dff6;
     border-radius: 10px; }
@@ -90,9 +90,14 @@ textarea {
   cursor: pointer; }
   .key.active {
     margin: 1px 1px;
-    background-color: #d5dff6; }
+    background-color: #8becf7;
+    opacity: 0.9;
+    border-radius: 70%; }
   .key:hover {
-    background-color: #d8d7f9; }
+    margin: 1px 1px;
+    background-color: #8becf7;
+    opacity: 0.9;
+    border-radius: 50%; }
   .key__sub {
     font-size: 1.2rem;
     color: grey;
