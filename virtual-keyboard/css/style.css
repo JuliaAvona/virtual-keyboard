@@ -14,13 +14,13 @@ body {
 textarea {
   display: block;
   width: 920px;
-  height: 200px;
+  height: 250px;
   font-family: inherit;
   color: black;
-  font-size: 1.8rem;
+  font-size: 3rem;
   border: 2px solid black;
   background: #e1fbfc;
-  border-radius: 10px;
+  border-radius: 12px;
   resize: none;
   margin: 0 auto;
   padding: 10px 10px;
@@ -34,13 +34,13 @@ textarea {
     border-radius: 10px; }
 
 .keyboard {
-  border: 2px black solid;
-  border-radius: 10px;
+  border: 3px black solid;
+  border-radius: 5px;
   margin: 0 auto;
   padding: 10px 10px;
   width: 920px;
   background-color: #e1fbfc;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
   -webkit-box-shadow: 0px 0px 10px 10px rgba(250, 218, 221, 0.8);
           box-shadow: 0px 0px 10px 10px rgba(250, 218, 221, 0.8); }
@@ -80,17 +80,17 @@ textarea {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 5px;
-  border: 2px black solid;
+  padding: 4px;
+  border: 2px #060606 solid;
   border-radius: 10px;
   color: black;
   background-color: #d5dff6;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   cursor: pointer; }
   .key.active {
     margin: 1px 1px;
-    background-color: #51ecfa; }
+    background-color: #d5dff6; }
   .key:hover {
     background-color: #d8d7f9; }
   .key__sub {

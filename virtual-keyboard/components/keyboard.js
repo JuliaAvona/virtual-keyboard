@@ -11,9 +11,9 @@ class Keyboard {
 
   init(lang) {
     this.keys = language[lang];
-    this.output = create('textarea', null, null, document.body, 
+    this.output = create('textarea', null, null, document.body,
       ['name', 'Input'], ['cols', '30'], ['rows', '10'], ['placeholder', 'Type here'], ['autofocus']);
-    this.container = create('section', 'keyboard', null, document.body, 
+    this.container = create('section', 'keyboard', null, document.body,
       ['data-language', lang], ['onselectstart', 'return false']);
     this.row1 = create('div', 'row row-1', null, this.container);
     this.row2 = create('div', 'row row-2', null, this.container);
@@ -70,7 +70,7 @@ class Keyboard {
         this.isShift = true;
         this.switchCase(true);
       }
-      if (event.keyCode === 18) {this.isAlt = true;}
+      if (event.keyCode === 18) { this.isAlt = true; }
       if (event.keyCode === 16 && this.isAlt || event.keyCode === 18 && this.isShift) {
         this.switchLanguage();
       }
@@ -105,7 +105,7 @@ class Keyboard {
         this.isShift = false;
         this.switchCase(false);
       }
-      if (event.keyCode === 18) {this.isAlt = false;}
+      if (event.keyCode === 18) { this.isAlt = false; }
     });
 
     this.currentPressedKey = null,
@@ -128,7 +128,7 @@ class Keyboard {
               this.isShift = true;
               this.switchCase(true);
             }
-            if (key.dataset.code === '18') {this.isAlt = true;}
+            if (key.dataset.code === '18') { this.isAlt = true; }
 
             if (key.dataset.code === '16' && this.isAlt || key.dataset.code === '18' && this.isShift) {
               this.switchLanguage();
@@ -155,7 +155,7 @@ class Keyboard {
           this.isShift = false;
           this.switchCase(false);
         }
-        if (this.currentPressedKey.dataset.code === '18') {this.isAlt = false;}
+        if (this.currentPressedKey.dataset.code === '18') { this.isAlt = false; }
         this.currentPressedKey = null;
       }
     });
@@ -259,8 +259,8 @@ class Keyboard {
 
   checkCaseForSwitchLanguage(button) {
     if (!button.keySub.textContent) {
-      if (button.keySub.classList.contains('key__sub_active')) {button.keySub.classList.remove('key__sub_active');}
-      if (button.keyMain.classList.contains('key_inactive')) {button.keyMain.classList.remove('key_inactive');}
+      if (button.keySub.classList.contains('key__sub_active')) { button.keySub.classList.remove('key__sub_active'); }
+      if (button.keyMain.classList.contains('key_inactive')) { button.keyMain.classList.remove('key_inactive'); }
     }
   }
 }
