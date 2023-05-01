@@ -1,9 +1,10 @@
 import create from './utils/create.js';
+import language from './languages/main.js';
 import Key from './key.js';
 import * as storage from './utils/storage.js';
-import language from './languages/main.js';
 
 class Keyboard {
+
   constructor() {
     this.keysPressed = {};
     this.isCaps = false;
@@ -12,7 +13,7 @@ class Keyboard {
   init(lang) {
     this.keys = language[lang];
     this.output = create('textarea', null, null, document.body,
-      ['name', 'Input'], ['cols', '30'], ['rows', '10'], ['placeholder', 'Type here'], ['autofocus']);
+      ['name', 'Input'], ['cols', '30'], ['rows', '10'], ['placeholder', 'Type here...'], ['autofocus']);
     this.container = create('section', 'keyboard', null, document.body,
       ['data-language', lang], ['onselectstart', 'return false']);
     this.row1 = create('div', 'row row-1', null, this.container);
@@ -46,11 +47,13 @@ class Keyboard {
 
     document.addEventListener('keydown', (event) => {
       event.preventDefault();
+      playSoundPress();
       this.output.focus();
       const keyObj = this.keysButtons.find((key) => key.keyCode === event.keyCode);
 
       if (event.code.match(/Control|Shift|Alt/)) {
         const items = document.querySelectorAll(`[data-code="${event.keyCode}"]`);
+
         if (event.code.match(/Right/)) {
           items[1].classList.add('active');
         } else {
@@ -92,6 +95,7 @@ class Keyboard {
         const items = document.querySelectorAll(`[data-code="${event.keyCode}"]`);
         if (event.code.match(/Right/)) {
           items[1].classList.remove('active');
+
         } else {
           items[0].classList.remove('active');
         }
@@ -111,11 +115,14 @@ class Keyboard {
     this.currentPressedKey = null,
 
       document.addEventListener('mousedown', (event) => {
+
         this.output.focus();
 
         if (event.target.closest('.key')) {
+
           const key = event.target.closest('.key');
           const keyObj = this.keysButtons.find((key) => key.keyCode == event.target.closest('.key').dataset.code);
+
           if (key.dataset.code === '20') {
             key.classList.toggle('active');
             this.isCaps = !this.isCaps ? true : false;
@@ -137,11 +144,13 @@ class Keyboard {
             if (!this.isCaps) {
               this.activateKey(keyObj, this.isShift ? keyObj.shift : keyObj.basicValue);
             } else if (this.isCaps) {
+
               if (this.isShift) {
                 this.activateKey(keyObj, keyObj.keySub.innerHTML ? keyObj.shift : keyObj.basicValue);
               } else {
                 this.activateKey(keyObj, keyObj.keySub.innerHTML ? keyObj.basicValue : keyObj.shift);
               }
+
             }
           }
         }
@@ -164,31 +173,43 @@ class Keyboard {
   }
 
   switchCase(isUpper) {
+
     if (isUpper) {
+
       this.keysButtons.forEach(button => {
+
         if (button.keySub.textContent) {
+
           if (this.isShift) {
             button.keySub.classList.add('key__sub_active');
             button.keyMain.classList.add('key_inactive');
           }
+
         }
 
         if (button.basicValue.length < 2 && this.isCaps && !this.isShift && !button.keySub.textContent) {
           button.keyMain.textContent = button.shift;
+
         } else if (button.basicValue.length < 2 && this.isCaps && this.isShift) {
           button.keyMain.textContent = button.basicValue;
+
         } else if (button.basicValue.length < 2 && !button.keySub.textContent) {
           button.keyMain.textContent = button.shift;
         }
       });
+
     } else {
       this.keysButtons.forEach(button => {
+
         if (button.keySub.textContent && button.basicValue.length < 2) {
           button.keySub.classList.remove('key__sub_active');
           button.keyMain.classList.remove('key_inactive');
+
         } else if (button.basicValue.length < 2) {
+
           if (this.isCaps) {
             button.keyMain.textContent = button.shift;
+
           } else {
             button.keyMain.textContent = button.basicValue;
           }
@@ -200,8 +221,10 @@ class Keyboard {
   switchLanguage() {
     const langAbbr = Object.keys(language);
     let langIndex = langAbbr.indexOf(this.container.dataset.language);
+
     this.keys = langIndex + 1 >= langAbbr.length ? language[langAbbr[langIndex -= langIndex]] : language[langAbbr[++langIndex]];
     this.container.dataset.language = langAbbr[langIndex];
+
     storage.storageSet('lang', langAbbr[langIndex]);
 
     this.keysButtons.forEach((button) => {
@@ -209,11 +232,14 @@ class Keyboard {
       button.basicValue = keyObj.basicValue;
       button.shift = keyObj.shift;
       button.keyMain.innerHTML = button.basicValue;
+
       if (keyObj.shift && keyObj.shift.match(/[^a-zA-Zа-яА-ЯёЁ]/g)) {
         button.keySub.innerHTML = button.shift;
+
       } else {
         button.keySub.innerHTML = '';
       }
+
       this.checkCaseForSwitchLanguage(button);
     });
   }
@@ -224,25 +250,31 @@ class Keyboard {
     const rightFromCursor = this.output.value.slice(cursorPosition);
 
     const fnButtons = {
-      '9': () => { //Tab
+      '9': () => {
         this.output.value = `${leftFromCursor}\t${rightFromCursor}`;
         ++cursorPosition;
       },
-      '37': () => cursorPosition = cursorPosition - 1 >= 0 ? --cursorPosition : 0, //ArrowLeft
-      '39': () => ++cursorPosition, //ArrowRight
-      '38': () => { //ArrowUp
+
+      '37': () => cursorPosition = cursorPosition - 1 >= 0 ? --cursorPosition : 0,
+
+      '39': () => ++cursorPosition,
+
+      '38': () => {
         const positionFromLeft = this.output.value.slice(0, cursorPosition).match(/(\n).*$(?!\1)/g) || [[1]];
         cursorPosition -= positionFromLeft[0].length;
       },
-      '40': () => { //ArrowDown
+
+      '40': () => {
         const positionFromLeft = this.output.value.slice(cursorPosition).match(/(\n).*$(?!\1)/) || [[1]];
         cursorPosition += positionFromLeft[0].length;
       },
-      '13': () => { //Enter
+
+      '13': () => {
         this.output.value = `${leftFromCursor}\n${rightFromCursor}`;
         ++cursorPosition;
       },
-      '8': () => { //Backspace
+
+      '8': () => {
         this.output.value = `${leftFromCursor.slice(0, -1)}${rightFromCursor}`;
         --cursorPosition;
       }
@@ -250,11 +282,14 @@ class Keyboard {
 
     if (fnButtons[keyObj.keyCode]) {
       fnButtons[keyObj.keyCode]();
+
     } else if (keyObj.basicValue.length < 2) {
       ++cursorPosition;
       this.output.value = `${leftFromCursor}${symbol || ''}${rightFromCursor}`;
+
     }
     this.output.setSelectionRange(cursorPosition, cursorPosition);
+
   }
 
   checkCaseForSwitchLanguage(button) {
@@ -264,5 +299,18 @@ class Keyboard {
     }
   }
 }
+
+const createAudio = () => {
+  const element = document.createElement("audio");
+  element.src = "./assets/sound.mp3";
+  element.classList.add("audio");
+  document.body.append(element);
+};
+createAudio();
+
+const playSoundPress = () => {
+  const audio = document.querySelector('.audio');
+  audio.play();
+};
 
 export default Keyboard;
