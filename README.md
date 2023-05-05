@@ -1,12 +1,13 @@
 # RSS Virtual Keyboard  
   
-- the virtual keyboard is able to switch between two language layouts (English + any other language). 
-    - assigning a keyboard shortcut for switching keyboard layout is up to you.
-    - the buttons on the virtual keyboard display symbols of a selected language
-    - the application saves a chosen language after the page is reloaded and displays the keyboard on that language
-    - the keyboard shortcut for changing language should be indicated on the page so that it will be clear for a user how to switch keyboard layout
-- keystrokes are animated
-- clicks on the buttons with a mouse on the virtual keyboard and pressing keys on a physical keyboard should input symbols to the text area located on the page above the virtual keyboard.
+  
+<img width="954" alt="Screenshot at May 05 11-28-01" src="https://user-images.githubusercontent.com/94717941/236526563-e77cfa1e-dc0b-4600-995a-ffb91992792a.png">
+  
+- The virtual keyboard is able to switch between two language layouts (English + any other language).
+- The buttons on the virtual keyboard display symbols of a selected language.
+- The application saves a chosen language after the page is reloaded and displays the keyboard on that language.
+- Keystrokes are animated.
+- Clicks on the buttons with a mouse on the virtual keyboard and pressing keys on a physical keyboard input symbols to the text area located on the page above the virtual keyboard:
     - pressing the `Up`, `Down`, `Left` or `Right` arrow key inputs an arrow symbol in the input field, or implements navigation on the text area.
     - pressing the `Enter` should move a text cursor to the next line
     - the `Tab` key creates a horizontal indent
